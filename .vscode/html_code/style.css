@@ -1,0 +1,44 @@
+.example {
+  background-color: blue;
+  padding: 20px;
+  color: white;
+  border-radius: 10px;
+}
+
+#setup_button {
+  background-color: red;
+  text-align: center;
+  margin: 40px;
+}
+
+.User_Setup {
+  text-align: center;
+  text-shadow: 2px;
+} 
+#to_input_info{
+  background-color: beige;
+}
+/* For the Confirm info on the set_up.html file */
+#confirm_info_button{
+  text-align: center;
+}
+/* For the Box that all info will be inputed by the user */
+.input_info_box {
+  background-color: blueviolet;
+}
+/* just the head for the set_up.html file, could be turned into a class for further use */
+#heading_for_setup {
+  text-align: center;
+}
+/* Universal button to go back to main page, will be on every page */
+.go_back_button {
+  background-color: aqua;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Times New Roman', Times, serif;
+}

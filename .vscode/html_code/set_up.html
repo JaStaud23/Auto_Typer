@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User_Setup</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id="to_input_info">
+  <h1 id="heading_for_setup">This page is for setting up your profile</h1>
+
+  <div class="User_Setup">
+    <!--name attribute is for adding a database in the future-->
+    <form action="">
+      <label for="f_name">First Name:</label><br>
+      <input type="text" id="f_name" name="f_name" class="input_info_box"><br>
+
+      <label for="l_name">Last Name:</label><br>
+      <input type="text" id="l_name" name="l_name" class="input_info_box"><br>
+
+      <label for="email">Email:</label><br>
+      <input type="text" id="user_email" name="email" class="input_info_box"><br>
+
+      <label for="username">Enter Username:</label><br>
+      <input type="text" id="username" name="username" class="input_info_box"><br>
+
+      <label for="password">Password:</label><br>
+      <input type="password" id="password" name="password" class="input_info_box"><br>
+    </form>
+
+    <div id="text_of_reveal_user_info"></div>
+  </div>
+
+  <div class="user_info_reveal_button">
+    <br>
+    <button onclick="reveal_user_info()" id="confirm_info_button">Confirm Your Info!!!</button>
+  </div>
+
+  <div>
+    <br>
+   <button onclick="window.location.href='index_home.html'" class="go_back_button"> Return to home</button>
+  </div>
+
+  <script>
+    // at first didn't understand the global variable, so chatGBT corrected my function
+    let savedPassword = ""; // global variable for password
+
+    function togglePassword() {
+      const passSpan = document.getElementById("passText");
+      const checkbox = document.getElementById("togglePass");
+
+      if (checkbox.checked) {
+        passSpan.textContent = savedPassword;
+      } else {
+        passSpan.textContent = "*".repeat(savedPassword.length);
+      }
+    }
+
+    function reveal_user_info() {
+      const f_name = document.getElementById("f_name").value;
+      const l_name = document.getElementById("l_name").value;
+      const user_email = document.getElementById("user_email").value;
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      savedPassword = password;
+
+      document.getElementById("text_of_reveal_user_info").innerHTML = `
+        <p><strong>First Name:</strong> ${f_name}</p>
+        <p><strong>Last Name:</strong> ${l_name}</p>
+        <p><strong>Email:</strong> ${user_email}</p>
+        <p><strong>Username:</strong> ${username}</p>
+        <p>
+          <strong>Password:</strong>
+          <span id="passText">${"*".repeat(password.length)}</span>
+          <input type="checkbox" id="togglePass" onchange="togglePassword()"> Show
+        </p>
+      `;
+    }
+    </script>
+  <!--This is for users to put facts about themselves-->
+<div>
+  <h2>Tell us 3 facts about yourself that you think a roommate should know.</h2>
+  <input type="text" id="3_facts_user" name="3_facts_user" class="3_facts_user" placeholder="e.g., I snore, I wake up early, I love cats"><br>
+  <button onclick="three_facts_user()">Submit</button>
+  <ul id="fact_list"></ul>
+</div>
+
+<script>
+  function three_facts_user() {
+    let input = document.getElementById("3_facts_user").value;
+    let facts = input.split(","); // split at commas
+    let list = document.getElementById("fact_list");
+    list.innerHTML = ""; // clear previous entries
+
+    for (let i = 0; i < facts.length; i++) {
+      let li = document.createElement("li");
+      li.textContent = facts[i].trim(); // remove extra spaces
+      list.appendChild(li);
+    }
+  }
+</script>
+</body>
+</html>
